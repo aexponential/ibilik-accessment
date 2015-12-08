@@ -1,7 +1,7 @@
 <% if logged_in? %>
 	<div align="right">Sign in as :<a href="/users/<%= current_user.id %>"><%= current_user.name %></a></div>
 <% end %>
-<h1>Welcome to SFC (suffering,frustation and crying)!</h1>
+<h1>Welcome to SFC (suffering, frustration and crying)!</h1>
 <% if logged_in? %>
 	<h2>Go away, <%= current_user.name %></h2>
 <% else %>
