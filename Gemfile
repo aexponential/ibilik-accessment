@@ -14,6 +14,7 @@ gem 'thin'
 gem 'activerecord'
 gem 'activesupport'
 gem 'sinatra-activerecord'
+gem 'sinatra-flash'
 
 # Adding Database elements
 gem 'pg'
@@ -23,6 +24,8 @@ gem 'rake'
 
 # Adding rspec for running unit testing
 gem 'rspec'
+gem 'byebug'
+gem 'bcrypt'
 
 group :development, :test do
 	# Adding shotgun for local web hosting

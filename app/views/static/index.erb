@@ -1,2 +1,16 @@
-<h1>Hello World</h1>
-<p>See Me in views/static/index.html.erb</p>
+<% if logged_in? %>
+	<div align="right">Sign in as :<a href="/users/<%= current_user.id %>"><%= current_user.name %></a></div>
+<% end %>
+<h1>Welcome to SFC (suffering,frustation and crying)!</h1>
+<% if logged_in? %>
+	<h2>Go away, <%= current_user.name %></h2>
+<% else %>
+	<a href="/users">Login</a>
+	<a href="/users/new">Sign up</a>
+<% end %>
+
+<h1>Home Page (Top Properties)</h1>
+<% @all.each_with_index do |x, index| %>
+	<% index += 1 %>
+	<h2><%= index %>) <a href="/properties/<%= x.id %>"><%= x.title %></a> (Posted by: <a href="/users/<%= x.user.id %>"><%= x.user.name %>)</a></h2>
+<% end %>
