@@ -9,13 +9,25 @@ get '/bookings/index' do
 end
 
 
+# # Create new booking
+# post '/bookings' do
+# 	booking = Booking.create(title: params[:title], body: params[:body], user_id: session[:user_id], property_id: params[:property_id])
+# 		redirect "/properties/#{booking.property_id}"
+# 	# erb :"bookings/new"	
+# end
+
+
 # Create new booking
 post '/bookings' do
-	booking = Booking.create(title: params[:title], body: params[:body], user_id: session[:user_id], property_id: params[:property_id])
-		redirect "/properties/#{booking.property.id}"
-	# erb :"bookings/new"	
+	booking = Booking.new(title: params[:title], body: params[:body], user_id: session[:user_id], property_id: params[:property_id])
+	if booking.save
+	redirect "/users/#{booking.user_id}"
+	else
+		@warning = "Sorry, there's something wrong"
+		erb :"bookings/new"
+	end
+	# redirect "/users/#{property.user_id}"
 end
-
 
 
 # View booking
@@ -34,7 +46,7 @@ end
 patch '/bookings/:id' do
 	booking = Booking.find(params[:id])
 	booking.update(title: params[:title], body: params[:body])
-	redirect "/bookings/#{booking.id}"
+	redirect "/bookings/#{booking_id}"
 end
 
 # Delete booking

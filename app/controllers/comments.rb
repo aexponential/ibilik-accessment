@@ -8,11 +8,23 @@ get '/comments/index' do
 	erb :'comments/index'
 end
 
+# # Create new comments
+# post '/comments' do
+# 	comment = Comment.create(title: params[:title], body: params[:body], user_id: session[:user_id], property_id: params[:property_id])
+# 		redirect "/properties/#{comment.property.id}"
+# 	# erb :"comments/new"	
+# end
+
 # Create new comments
 post '/comments' do
-	comment = Comment.create(title: params[:title], body: params[:body], user_id: session[:user_id], property_id: params[:property_id])
-		redirect "/properties/#{comment.property.id}"
-	# erb :"comments/new"	
+	comments = Comment.new(title: params[:title], body: params[:body], user_id: session[:user_id], property_id: params[:property_id])
+	if comment.save
+	redirect "/users/#{comment.user_id}"
+	else
+		@warning = "Sorry, there's something wrong"
+		erb :"comments/new"
+	end
+	# redirect "/users/#{property.user_id}"
 end
 
 

@@ -35,17 +35,4 @@ by <%= @property.user.name%><br>
 	</form>
 <% end %>	
 <% end %>
-<a href="/"><button>Main Page</button></a>
 
-<% if logged_in? %>
-	<div align="right">Sign in as :<a href="/users/<%= current_user.id %>"><%= current_user.name %></a></div>
-<% end %>
-<h1>Heidy Ho</h1>
-<% if logged_in? %>
-	<h2>Go away, <%= current_user.name %></h2>
-<% else %>
-	<a href="/users">Login</a>
-	<a href="/users/new">Sign up</a>
-<% end %>
-
-<h1>Home Page (Top Properties</h1>
